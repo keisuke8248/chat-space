@@ -32,7 +32,7 @@
 ### commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text||
+|text|text|null: false, foreign_key: true|
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
