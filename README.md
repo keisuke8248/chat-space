@@ -9,7 +9,6 @@
 ### Association
 - has_many :groups_users
 - has_many :groups, through: :groups_users
-- has_many :comments
 
 ## groupsテーブル
 |Column|Type|Options|
@@ -19,7 +18,6 @@
 ### Association
 - has_many :user_groupes
 - has_many :users, through: :user_groups
-- has_many :comments
 
 ## groups_usersテーブル
 |Column|Type|Options|
@@ -34,7 +32,7 @@
 ### commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text||
+|text|text|null: false, foreign_key: true|
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
