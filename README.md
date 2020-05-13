@@ -9,6 +9,7 @@
 ### Association
 - has_many :groups_users
 - has_many :groups, through: :groups_users
+- has_many :massages
 
 ## groupsテーブル
 |Column|Type|Options|
@@ -18,6 +19,7 @@
 ### Association
 - has_many :user_groupes
 - has_many :users, through: :user_groups
+- has_many :messages
 
 ## groups_usersテーブル
 |Column|Type|Options|
@@ -29,10 +31,10 @@
 - belongs_to :group
 - belongs_to :user
 
-### commentsテーブル
+### messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false, foreign_key: true|
+|text|text||
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
