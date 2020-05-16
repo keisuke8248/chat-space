@@ -1,0 +1,30 @@
+.MainChat
+  .RightHeader
+    .GroupInfo
+      %div.GroupInfo__group-name
+        Test
+      %div.GroupInfo__group-member
+        Member：keisuke
+    = link_to do
+      %div.RightHeader__edit
+        Edit
+  .Posts
+    .Post
+      .Post__info
+        %a.Post__info__poster keisuke
+        %a.Post__info__date 2020/05/16(sat) 14:30:00
+      %div.Post__message
+        こんにちは
+      .Post__info
+        %a.Post__info__poster keisuke
+        %a.Post__info__date 2020/05/16(sat) 17:30:00
+      %div.Post__message
+        こんばんは
+  .Form
+    %form.Form__new-post
+      .InputMessage
+        %input.InputMessage__message{type: "text", placeholder: "type a message"}
+        %label{class: "InputMessage__image"}
+          = icon('fas', 'image')
+          %input{type: "file"}
+      %input.Form__new-post__send-btn{type: "submit", value: "Send"}
