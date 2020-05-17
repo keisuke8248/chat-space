@@ -9,15 +9,17 @@
 ### Association
 - has_many :groups_users
 - has_many :groups, through: :groups_users
+- has_many :comments
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :user_groupes
 - has_many :users, through: :user_groups
+- has_many :comments
 
 ## groups_usersテーブル
 |Column|Type|Options|
