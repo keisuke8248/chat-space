@@ -1,0 +1,11 @@
+@mixin align-items() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin space-between() {
+  display: flex;
+  justify-content: space-between;
+}
+
+$mainWhiteColor: #ffffff
