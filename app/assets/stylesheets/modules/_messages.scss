@@ -136,7 +136,7 @@ width: calc(100vw - 300px);
         position: absolute;
         right: 10px;
         top: 0;
-        input {
+        .hidden {
           display: none;
         }
       }
