@@ -2,29 +2,21 @@
   .RightHeader
     .GroupInfo
       .GroupInfo__group-name
-        Test
+        = @group.name
       .GroupInfo__group-member
-        Member：keisuke
-    = link_to do
+        - @group.group_users.each do |group_user|
+          = group_user.user.name
+    = link_to edit_group_path(@group.id) do
       .RightHeader__edit
         Edit
   .Posts
     .Post
-      .Post__info
-        %a.Post__info__poster keisuke
-        %a.Post__info__date 2020/05/16(sat) 14:30:00
-      .Post__message
-        こんにちは
-      .Post__info
-        %a.Post__info__poster keisuke
-        %a.Post__info__date 2020/05/16(sat) 17:30:00
-      .Post__message
-        こんばんは
+      = render @messages
   .Form
-    %form.Form__new-post
+    = form_for [@group, @message], html: {class: 'Form__new-post'} do |f|
       .InputMessage
-        %input.InputMessage__message{type: "text", placeholder: "type a message"}
-        %label{class: "InputMessage__image"}
+        = f.text_field :content, class: 'InputMessage__message', placeholder: 'type a message'
+        = f.label :image, class: 'InputMessage__image' do
           = icon('fas', 'image')
-          %input{type: "file"}
-      %input.Form__new-post__send-btn{type: "submit", value: "Send"}
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'Form__new-post__send-btn'
