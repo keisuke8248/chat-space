@@ -54,10 +54,11 @@ $(function(){
       $(".Posts").append(html);
       $('.Posts').animate({scrollTop: $('.Posts')[0].scrollHeight});
       $('#new_message')[0].reset();
-      $('.Form__new-post__send-btn').prop('disabled', false);
     })
     .fail(function(){
       alert('メッセージ送信に失敗しました');
+    })
+    .always(function(){
       $('.Form__new-post__send-btn').prop('disabled', false);
     })
   });
