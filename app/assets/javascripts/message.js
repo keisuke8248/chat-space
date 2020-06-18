@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if(message.image) {
       var html = `<div class="Post">
-                    <div class="Post__info">
+                    <div class="Post__info" data-message-id=${message.id}>
                       <a class="Post__info__poster">
                         ${message.user_name}
                       </a>
@@ -19,7 +19,7 @@ $(function(){
                   </div>`
       return html;
     } else {
-      var html = `<div class="Post">
+      var html = `<div class="Post" data-message-id=${message.id}>
                     <div class="Post__info">
                       <a class="Post__info__poster">
                         ${message.user_name}
@@ -37,6 +37,7 @@ $(function(){
       return html;
     };
   }
+
   $('#new_message').on('submit', function(e){
     e.preventDefault()
     var formData = new FormData(this);
@@ -62,4 +63,32 @@ $(function(){
       $('.Form__new-post__send-btn').prop('disabled', false);
     })
   });
+  
+  var reloadMessages = function() {
+    var last_message_id = $('.Post__info:last').data("message-id");
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      if (messages.length !== 0) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.Posts').append(insertHTML);
+        $('.Posts').animate({ scrollTop: $('.Posts')[0].scrollHeight});
+      }
+    })
+    
+    .fail(function() {
+      alert('error');
+    });
+  };
+
+  if (document.location.href.match(/\/groups\/\d+\/messages/)){
+    setInterval(reloadMessages, 7000);
+  }
 });
