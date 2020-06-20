@@ -6,6 +6,11 @@
   display: flex;
 }
 
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
 .SideBar {
 background-color: #253141;
 height: 100vh;
@@ -28,11 +33,7 @@ width: 300px;
     text-align: right;
     width: 60px;
     .far.fa-edit {
-      color: $mainWhiteColor;
       margin-right: 5px;
-    }
-    .fa.fa-cog {
-      color: $mainWhiteColor;
     }
   }
 }
@@ -45,9 +46,11 @@ width: 300px;
     padding: 20px 0 40px 0;
     &__name {
       line-height: 15px;
+      font-size: 15px;
     }
     &__message {
       line-height: 11px;
+      font-size: 11px;
       margin-top: 5px;
     }
   }
