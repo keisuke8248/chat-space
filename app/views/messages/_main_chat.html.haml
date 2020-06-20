@@ -11,7 +11,7 @@
       .RightHeader__edit
         Edit
   .Posts
-    .Post
+    .Post{data: {message: {id: @message.id}}}
       = render @messages
   .Form
     = form_for [@group, @message], html: {class: 'Form__new-post'} do |f|
